@@ -21,7 +21,7 @@
 ## 需要攻关的技术/商讨的问题
 
 - [x] 不使用框架/使用框架-->使用什么框架
-- **flask（首选）**\njinx
+- **flask（首选）**\nginx
 - [备选参考-log4j](https://blog.csdn.net/weixin_51194266/article/details/125524303?spm=1001.2014.3001.5502) 用别人的轮子
 
 - [x] 使用什么数据库
@@ -35,9 +35,15 @@
 - [ ] 数据库和代码部分的接口问题(待定)
 
 - [x] 使用什么启动Web服务
-- njinx（暂定）
+- nginx（暂定）
 
 - [ ] **各部分谁来做**
   1. 前端和网页：曹兴贤、叶津铭
 
 - [ ] 漏洞类型：逻辑、命令执行、文件上传、XSS、会话保持(cookie\session\token\captcha)、中间件（Web服务或框架漏洞：Flask（SSTI）、Django（任意代码执行、重置密码等））、SQL注入（待定）
+
+## 参考资料
+
+- [flask部署到虚拟机服务器,flask 本地服务器部署](https://blog.csdn.net/weixin_29994499/article/details/119631320)
+
+- [Flask - nginx部署](https://blog.csdn.net/qq_33962481/article/details/114375048)
