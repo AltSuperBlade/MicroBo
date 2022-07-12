@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
@@ -16,12 +16,15 @@ def home():
         if len(note) < 1:
             flash('Note is too short!', category='error')
         else:
-            new_note = Note(data=note, user_id=current_user.id)
+            new_note = Note(data=note, user_id=current_user.id,nickname=current_user.nickname)
             db.session.add(new_note)
             db.session.commit()
             flash('Note added!', category='success')
+            return redirect('/')
 
-    return render_template("home.html", user=current_user)
+    notes=db.session.query(Note).order_by(Note.date.desc()).all()
+
+    return render_template("home.html", user=current_user,notes=notes)
 
 
 @views.route('/delete-note', methods=['POST'])
