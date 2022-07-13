@@ -11,6 +11,11 @@
 <ul class="list-group list-group-flush" id="notes">
   {% for note in notes %}
   <li class="list-group-item">
+    <form name="accessProfile" method="POST">
+      <input type="hidden" name="noteUserId" value="{{note.user_id}}">
+      <a href="javascript:document.accessProfile.submit();">{{ note.nickname }}</a>
+    </form>
+    
     {{ note.nickname }}
     <div class="pull-right">
       {{ note.date }}

@@ -26,6 +26,14 @@ def home():
 
     return render_template("home.html", user=current_user,notes=notes)
 
+@views.route('/profile', methods=['GET'])
+@login_required
+def profile():
+    return render_template("profile.html",user=current_user,locationid=current_user.id)
+
+@views.route('/profile', methods=['POST'])
+def accessprofile():
+    return render_template("profile.html",user=current_user,locationid=request.form['noteUserId'])
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
@@ -38,3 +46,12 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+# @views.route('/go-profile', methods=['GET','POST'])
+# def go_profile():
+#     # note = json.loads(request.data)
+#     # noteId = note['noteId']
+#     # note = Note.query.get(noteId)
+#     return render_template("profile.html",user=current_user,locationid=note.user_id)
+
+#    return jsonify({})
