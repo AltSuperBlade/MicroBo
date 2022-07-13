@@ -13,6 +13,12 @@
       type="text/css"
       href="{{ url_for('static', filename='css/font-awesome.min.css') }}"
     />
+    
+    {% block styles %}
+
+    {% endblock %}
+
+
 
     <title>{% block title %}Home{% endblock %}</title>
   </head>
@@ -74,5 +80,7 @@
       type="text/javascript"
       src="{{ url_for('static', filename='index.js') }}"
     ></script>
+
+    {% block script %} {% endblock script %}
   </body>
 </html>

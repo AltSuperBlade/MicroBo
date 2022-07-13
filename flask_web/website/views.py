@@ -38,3 +38,15 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+
+
+@views.route('/profile',methods=['GET', 'POST'])
+def profile():
+    notes=db.session.query(Note).order_by(Note.date.desc()).all()
+        
+
+
+    
+
+    return render_template("profile.html", user=current_user, notes=notes)
