@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Edit{% endblock %} {% block
+    content %}
+    <form method="POST">
+      <h3 align="center">Edit</h3>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="{{user.email}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nickname"
+          name="nickname"
+          placeholder="{{user.nickname}}"
+        />
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endblock %}
+    
