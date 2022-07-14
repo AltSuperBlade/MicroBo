@@ -1,10 +1,15 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, current_app
 from flask_login import login_required, current_user
 from .models import Note
+from .models import User
 from . import db
 import json
 
 views = Blueprint('views', __name__)
+
+@views.route('/favicon.ico')
+def get_fav():
+    return current_app.send_static_file('img/favicon.ico')
 
 
 @views.route('/', methods=['GET', 'POST'])
@@ -26,14 +31,22 @@ def home():
 
     return render_template("home.html", user=current_user,notes=notes)
 
-@views.route('/profile', methods=['GET'])
-@login_required
-def profile():
-    return render_template("profile.html",user=current_user,locationid=current_user.id)
 
-@views.route('/profile', methods=['POST'])
-def accessprofile():
-    return render_template("profile.html",user=current_user,locationid=request.form['noteUserId'])
+@views.route('/profile/<nickname>',methods=['GET', 'POST'])
+@login_required
+def profile(nickname):
+    user_id = User.query.filter_by(nickname=nickname).first().id
+    accessingUser=User.query.get(user_id)
+    return render_template("profile.html",user=current_user,accessingUser=accessingUser)
+# @views.route('/profile', methods=['GET'])
+# @login_required
+# def profile():
+#     return render_template("profile.html",user=current_user,locationid=current_user.id)
+
+# @views.route('/profile', methods=['POST'])
+# @login_required
+# def accessprofile():
+#     return render_template("profile.html",user=current_user,locationid=request.form['noteUserId'])
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
