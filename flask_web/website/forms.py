@@ -11,3 +11,8 @@ class editEmail(FlaskForm):
 class editNickname(FlaskForm):
     nickname = StringField('nickname', validators=[DataRequired(), Length(1,20)])
     submit2 = SubmitField('Edit your nickname')
+
+class changePassword(FlaskForm):
+    password1 = PasswordField('New password',validators=[DataRequired(),Length(8,128)])
+    password2 = PasswordField('Confirm new password',validators=[DataRequired(),Length(8,128)])    
+    submit3 = SubmitField('Confirm')

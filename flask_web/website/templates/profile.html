@@ -3,7 +3,8 @@
 <h1 align="center">Email:{{accessingUser.email}}</h1>
 {% if user.id==accessingUser.id %}
 <div align="center">
-  <button type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.edit') }}'">Edit</button>
+  <button align="left" type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.edit') }}'">Edit Profile</button>
+  <button align="right" type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.ChangePassword') }}'">Change Password</button>
 </div>
 {% else %}
 <h3>hello, {{user.nickname}}</h3>

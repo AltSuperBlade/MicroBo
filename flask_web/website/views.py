@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, current_app,url_for
 from flask_login import login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from .models import Note,User
-from .forms import editEmail,editNickname
+from .forms import editEmail,editNickname,changePassword
 from . import db
 import json
 import re
@@ -60,7 +61,7 @@ def edit():
             else:
                 User.query.filter(User.id == user.id).update({'email': email})
                 db.session.commit()
-            flash('%s, you have just submitted your new email address.' % email)
+                flash('%s, you have just submitted your new email address.' % email)
             return redirect(url_for('views.profile',user_id=user.id))
 
         if edit_nickname.submit2.data and edit_nickname.validate():
@@ -76,9 +77,30 @@ def edit():
                 db.session.commit()
                 Note.query.filter(Note.user_id == user.id).update({'nickname':nickname})
                 db.session.commit()
-            flash('%s, you have just submitted your new nickname.' % nickname)
+                flash('%s, you have just submitted your new nickname.' % nickname)
             return redirect(url_for('views.profile',user_id=user.id))
     return render_template("edit.html",user=current_user,edit_email=edit_email,edit_nickname=edit_nickname)
+
+
+@views.route('/change-password',methods=['GET', 'POST'])
+@login_required
+def ChangePassword():
+    change_password=changePassword()
+    if request.method == 'POST':
+        password1=change_password.password1.data
+        password2=change_password.password2.data
+        if password1 != password2:
+            flash('Passwords don\'t match.', category='error')
+        elif len(password1) < 8:
+            flash('Password must be at least 8 characters.', category='error')
+        elif re.search(r'[_]|[\W]', password1)==None:
+            flash('Password must have special characters.', category='error')
+        else:
+            User.query.filter(User.id == current_user.id).update({'password':generate_password_hash(password1, method='sha256')})
+            db.session.commit()
+            flash('Password changed!',category='success')
+            return redirect(url_for('views.profile',user_id=current_user.id))
+    return render_template("change_password.html",user=current_user,change_password=change_password)
 
 
 @views.route('/delete-note', methods=['POST'])
