@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">Notes</h1>
+<form method="POST">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in notes %}
+  <li class="list-group-item">
+    <form name="accessProfile" method="POST">
+      <input type="hidden" name="noteUserId" value="{{note.user_id}}">
+      <a href="javascript:document.accessProfile.submit();">{{ note.nickname }}</a>
+    </form>
+    
+    {{ note.nickname }}
+    <div class="pull-right">
+      {{ note.date }}
+    </div>
+    <br \>
+    {{ note.data }}
+    {% if note.user_id == user.id %}
+      <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
