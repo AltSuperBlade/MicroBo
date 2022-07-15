@@ -1,10 +1,9 @@
-{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block content%}
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block content %}
 <h1 align="center">{{accessingUser.nickname}}'s Profile</h1>
+<h1 align="center">Email:{{accessingUser.email}}</h1>
 {% if user.id==accessingUser.id %}
 <div align="center">
-    <form method="POST">
-        <button type="submit" class="btn btn-primary">Edit</button>
-    </form>
+  <button type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.edit') }}'">Edit</button>
 </div>
 {% else %}
 <h3>hello, {{user.nickname}}</h3>

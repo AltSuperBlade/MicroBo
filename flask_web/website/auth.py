@@ -46,9 +46,11 @@ def sign_up():
 
         user = User.query.filter_by(email=email).first()
         if user:
-            flash('Email already exists.', category='error')
+            flash('Email has already exists.', category='error')
         elif not re.match(r'^[0-9a-zA-Z_]{0,19}@[0-9a-zA-Z]{1,13}\.[com,cn,net]{1,3}$',email):
             flash('Email must be valid.', category='error')
+        elif User.query.filter_by(nickname=nickname).first():
+            flash('Nickname has already exists.', category='error')
         elif len(nickname) < 2:
             flash('Nickname must be greater than 1 character.', category='error')
         elif password1 != password2:
