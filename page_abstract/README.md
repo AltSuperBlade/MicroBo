@@ -2,7 +2,7 @@
 
 也就是示意图，可以直接看也可以演示模式
 
-![](pics\play.png)
+![](pics/play.png)
 
 邀请你加入Pixso文件“Pixso 文件”一起协作:`https://pixso.cn/app/share/f/0BcdnoTNwwEPdxvx7Z1sy9o3VDj7Sv4P`
 
@@ -20,7 +20,7 @@
 
 #### 2、加批注
 
-![](pics\head.png)
+![](pics/head.png)
 
 点击红框内的气泡，然后点击要加批注的地方就ok。
 
