@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %}Edit{% endblock %} {% block content %}
+<h3 align="center">Edit</h3>
+<form method = 'post'>
+  {{ edit_email.csrf_token }}
+  {{ edit_email.email.label }}{{ edit_email.email(class="form-control",type="email") }}
+  {{ edit_email.submit1(class="btn btn-primary") }}
+</form>
+<form method = 'post'>
+  {{ edit_nickname.csrf_token }}
+  {{ edit_nickname.nickname.label }}{{ edit_nickname.nickname(class="form-control",type="text") }}
+  {{ edit_nickname.submit2(class="btn btn-primary") }}
+</form>
+{% endblock %}
+    

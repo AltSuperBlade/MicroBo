@@ -1,5 +1,4 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
 <h1 align="center">Notes</h1>
 <form method="POST">
   <textarea name="note" id="note" class="form-control"></textarea>
@@ -11,12 +10,7 @@
 <ul class="list-group list-group-flush" id="notes">
   {% for note in notes %}
   <li class="list-group-item">
-    <form name="accessProfile" method="POST">
-      <input type="hidden" name="noteUserId" value="{{note.user_id}}">
-      <a href="javascript:document.accessProfile.submit();">{{ note.nickname }}</a>
-    </form>
-    
-    {{ note.nickname }}
+    <a href="/profile/{{note.user_id}}">{{ note.nickname }}</a>
     <div class="pull-right">
       {{ note.date }}
     </div>

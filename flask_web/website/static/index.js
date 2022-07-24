@@ -7,14 +7,3 @@ function deleteNote(noteId) {
   });
 }
 
-// function goProfile(user,noteUserId) {
-//   fetch("/go-profile",{
-//     method:"GET",
-//   })
-//   // fetch("/go-profile", {
-//   //   method: "GET",
-//   //   body: JSON.stringify({ noteUserId: noteUserId }),
-//   // }).then((_res) => {
-//   //window.location.href = "/profile";
-//   //});
-// }
