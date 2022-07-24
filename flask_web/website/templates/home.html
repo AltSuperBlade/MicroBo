@@ -12,6 +12,7 @@
   {% for note in notes %}
   <li class="list-group-item">
     {{ note.nickname }}
+    <img src="{{ avatars.robohash(note.nickname,size='100') }}">
     <div class="pull-right">
       {{ note.date }}
     </div>

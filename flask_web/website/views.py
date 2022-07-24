@@ -44,9 +44,7 @@ def delete_note():
 @views.route('/profile',methods=['GET', 'POST'])
 def profile():
     notes=db.session.query(Note).order_by(Note.date.desc()).all()
-        
-
 
     
 
-    return render_template("profile.html", user=current_user, notes=notes)
+    return render_template("profile.html", user=current_user, notes=notes,username=current_user.nickname)
