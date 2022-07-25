@@ -10,7 +10,12 @@
 <ul class="list-group list-group-flush" id="notes">
   {% for note in notes %}
   <li class="list-group-item">
-    <a href="/profile/{{note.user_id}}">{{ note.nickname }}</a>
+    {% for people in users %}
+      {% if note.user_id==people.id %}
+
+        <a href="/profile/{{note.user_id}}"><img src="{{ url_for('static', filename='images/'+people.portraitLink) }}" alt="{{ people.portraitLink }}" att="a" width="50" height="50">{{ people.nickname }}</a>
+      {% endif %}
+    {% endfor %}
     <div class="pull-right">
       {{ note.date }}
     </div>
