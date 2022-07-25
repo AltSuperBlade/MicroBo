@@ -14,6 +14,7 @@ import os
 
 views = Blueprint('views', __name__)
 
+
 #设置允许的文件格式
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'JPG', 'PNG', 'bmp'])
  
@@ -23,28 +24,38 @@ def allowed_file(filename):
 # 设置静态文件缓存过期时间
 views.send_file_max_age_default = timedelta(seconds=1)
  
-@views.route('/upload', methods=['POST', 'GET'])  # 添加路由
+@views.route('/upload', methods=['POST', 'GET'])
+@login_required
 def upload():
     if request.method == 'POST':
+
+        user=current_user
+
         f = request.files['file']
  
         if not (f and allowed_file(f.filename)):
             flash('Please check your format, we only accept png、PNG、jpg、JPG、bmp', category='error')
             # return jsonify({"error": 1001, "msg": "请检查上传的图片类型，仅限于png、PNG、jpg、JPG、bmp"})
- 
+        else:
         # user_input = request.form.get("name")
  
-        basepath = os.path.dirname(__file__)  # 当前文件所在路径
- 
-        upload_path = os.path.join(basepath, 'static/images',secure_filename(f.filename))  #注意：没有的文件夹一定要先创建，不然会提示没有该路径
-        f.save(upload_path)
+            basepath = os.path.dirname(__file__)  # 当前文件所在路径
+
+
+            upload_path = os.path.join(basepath, 'static/images',secure_filename(f.filename))  #注意：没有的文件夹一定要先创建，不然会提示没有该路径
+            f.save(upload_path)
+
+            User.query.filter(User.id == user.id).update({'portraitLink': secure_filename(f.filename)})
+            db.session.commit()
+            flash('Congratuation, you have just altered your portrait.',category="success")
+            return redirect(url_for('views.profile',user_id=user.id))
  
         # image_data = open(upload_path, "rb").read()
         # response = make_response(image_data)
         # response.headers['Content-Type'] = 'image/png'
         # return response
  
-    return render_template('upload.html')
+    return render_template('upload.html',user=current_user)
 
 
 @views.route('/favicon.ico')
@@ -68,15 +79,16 @@ def home():
             return redirect('/')
 
     notes=db.session.query(Note).order_by(Note.date.desc()).all()
+    users=db.session.query(User).order_by(User.id.desc()).all()
 
-    return render_template("home.html", user=current_user,notes=notes)
+    return render_template("home.html", user=current_user,notes=notes,users=users)
 
 
 @views.route('/profile/<user_id>',methods=['GET', 'POST'])
 @login_required
 def profile(user_id):
-    if request.method=='POST':
-        return render_template("edit.html",user=current_user)
+    # if request.method=='POST':
+    #     return render_template("edit.html",user=current_user)
     accessingUser=User.query.get(user_id)
     return render_template("profile.html",user=current_user,accessingUser=accessingUser)
 
@@ -99,7 +111,7 @@ def edit():
             else:
                 User.query.filter(User.id == user.id).update({'email': email})
                 db.session.commit()
-                flash('%s, you have just submitted your new email address.' % email)
+                flash('%s, you have just submitted your new email address.' % email,category='success')
             return redirect(url_for('views.profile',user_id=user.id))
 
         if edit_nickname.submit2.data and edit_nickname.validate():
@@ -115,7 +127,7 @@ def edit():
                 db.session.commit()
                 Note.query.filter(Note.user_id == user.id).update({'nickname':nickname})
                 db.session.commit()
-                flash('%s, you have just submitted your new nickname.' % nickname)
+                flash('%s, you have just submitted your new nickname.' % nickname,category='success')
             return redirect(url_for('views.profile',user_id=user.id))
     return render_template("edit.html",user=current_user,edit_email=edit_email,edit_nickname=edit_nickname)
 

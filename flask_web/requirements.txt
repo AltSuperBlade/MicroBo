@@ -3,4 +3,3 @@ Flask-SQLAlchemy
 flask-login
 flask_wtf
 wtforms
-opencv-python
