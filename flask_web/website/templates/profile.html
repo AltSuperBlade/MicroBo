@@ -9,6 +9,9 @@
 {% else %}
 <h3>hello, {{user.nickname}}</h3>
 {% endif %}
+<div align="center">
+  <img src="{{ url_for('static', filename='images/'+'{{accessingUser.portraitLink}}')| replace('%7B', '{')|replace('%7D','}') }}" alt="">
+</div>
 <h2>My Notes</h2>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in accessingUser.notes %}
