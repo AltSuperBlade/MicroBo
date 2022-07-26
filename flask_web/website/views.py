@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, current_app,url_for,make_response
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, current_app,url_for,make_response,render_template_string
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -163,3 +163,10 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+
+@views.route("/index/")
+def ssti():
+    # try to access 'http://127.0.0.1:5000/index/?content=<script>alert(/xss/)</script>'
+    content = request.args.get("content")
+    return render_template_string(content)
