@@ -11,6 +11,7 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    # 登录页面
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -32,12 +33,14 @@ def login():
 @auth.route('/logout')
 @login_required
 def logout():
+    # 登出功能
     logout_user()
     return redirect(url_for('auth.login'))
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    注册页面
     if request.method == 'POST':
         email = request.form.get('email')
         nickname = request.form.get('nickname')

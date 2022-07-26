@@ -12,7 +12,6 @@
   <li class="list-group-item">
     {% for people in users %}
       {% if note.user_id==people.id %}
-
         <a href="/profile/{{note.user_id}}"><img src="{{ url_for('static', filename='images/'+people.portraitLink) }}" alt="{{ people.portraitLink }}" att="a" width="50" height="50">{{ people.nickname }}</a>
       {% endif %}
     {% endfor %}
