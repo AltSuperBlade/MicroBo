@@ -47,3 +47,7 @@
 - [flask部署到虚拟机服务器,flask 本地服务器部署](https://blog.csdn.net/weixin_29994499/article/details/119631320)
 
 - [Flask - nginx部署](https://blog.csdn.net/qq_33962481/article/details/114375048)
+
+- [Flask-SSTI注意事项以及一些POC](https://www.cnblogs.com/ersuani/p/13896311.html)
+
+- [关于flask的SSTI注入](https://blog.csdn.net/qq_39850969/article/details/86581393)
