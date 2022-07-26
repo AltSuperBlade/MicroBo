@@ -40,7 +40,7 @@ def logout():
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
-    注册页面
+    # 注册页面
     if request.method == 'POST':
         email = request.form.get('email')
         nickname = request.form.get('nickname')
