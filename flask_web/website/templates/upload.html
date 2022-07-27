@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Alter Portrait{% endblock %} {% block content %}
+<div class="upload_all">
+    <form action="" enctype='multipart/form-data' method='POST'>
+        <div class="upload_title"><h3 >Alter Portrait</h3></div>
+        <div class="wrapper">  <input type="file" name="file" id="file" />
+            <label for="file" class="btn-3">
+                <span>select</span>
+            </label>
+        </div>
+        <div class="butn upload_btn"><button type="submit" class="btn btn-primary">
+            <span>Submit</span>
+            <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+            </svg>
+        </button></div>
+    </form>
+</div>
+<div class="jump-ball">
+    <ul class="jump">
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+        <li class="j-ball"></li>
+    </ul>
+</div>
+
+{% endblock %}

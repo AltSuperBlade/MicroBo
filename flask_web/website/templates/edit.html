@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Edit{% endblock %} {% block content %}
+<h3 align="center">Edit</h3>
+<div>
+  <form method = 'post'>
+    {{ edit_email.csrf_token }}
+    {{ edit_email.email.label }}{{ edit_email.email(class="form-control",type="email") }}
+    <div class="butn">
+    {{ edit_email.submit1(class="btn btn-primary") }}
+    </div>
+  </form>
+  <form method = 'post'>
+    {{ edit_nickname.csrf_token }}
+    {{ edit_nickname.nickname.label }}{{ edit_nickname.nickname(class="form-control",type="text") }}
+    <div class="butn">
+    {{ edit_nickname.submit2(class="btn btn-primary") }}
+  </div>
+  </form>
+</div>
+<div class="jump-ball">
+  <ul class="jump">
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+      <li class="j-ball"></li>
+  </ul>
+</div>
+{% endblock %}

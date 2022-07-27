@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='css/base.css') }}"
+    />
+
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -13,11 +22,6 @@
       type="text/css"
       href="{{ url_for('static', filename='css/font-awesome.min.css') }}"
     />
-    
-    {% block styles %}
-
-    {% endblock %}
-
 
 
     <title>{% block title %}Home{% endblock %}</title>
@@ -36,7 +40,7 @@
         <div class="navbar-nav">
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="profile" href="/profile">Profile</a>
+          <a class="nav-item nav-link" id="profile" href="/profile/{{user.id}}">Profile</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
@@ -81,6 +85,6 @@
       src="{{ url_for('static', filename='index.js') }}"
     ></script>
 
-    {% block script %} {% endblock script %}
+
   </body>
 </html>
