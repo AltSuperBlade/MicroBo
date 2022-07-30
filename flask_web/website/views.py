@@ -7,7 +7,6 @@ from .models import Note,User
 from .forms import editEmail,editNickname,changePassword
 from . import db
 import json
-import cv2
 import re
 import os
 
