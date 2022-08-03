@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %}temp Profile{% endblock %} {% block content %}
+
+{% if user.id==accessingUser.id%}
+<h1 align="center">My Profile</h1>
+{% else %}
+<h1 align="center">{{accessingUser.nickname}}'s Profile</h1>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-11 media">
+            <div class="row">
+                <a class="col-md-1 media-left" >
+                    <img src="{{ url_for('static', filename='images/'+accessingUser.portraitLink) }}" alt="{{accessingUser.portraitLink}}" width="150" height="150">
+                </a>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-7 media-body">
+                    <h3 class="media-heading">Hello, {{user.nickname}}</h3>
+                    {% if user.id==accessingUser.id%}
+                    <h1 class="media-heading">My Notes</h1>
+                    {% else %}
+                    <h1 class="media-heading">{{accessingUser.nickname}}'s Notes</h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2">
+            {% if user.id==accessingUser.id %}
+            <button align="left" type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.upload') }}'">Upload portrait</button>
+            <br>
+            <button align="left" type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.edit') }}'">Edit Profile</button>
+            <br>
+            <button align="left" type="submit" class="btn btn-primary" onclick="window.location.href='{{ url_for('views.ChangePassword') }}'">Change Password</button>
+            {% endif %}
+        </div>
+        <div class="col-md-9">
+            <ul class="list-group list-group-flush" id="notes">
+                {% for note in accessingUser.notes %}
+                <li class="list-group-item">
+                    {{ note.date }}
+                    <br \>
+                    {{ note.data }}
+                    {% if note.user_id == user.id %}
+                    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
