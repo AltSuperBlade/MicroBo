@@ -6,8 +6,9 @@ from datetime import timedelta
 from .models import Note,User
 from .forms import editEmail,editNickname,changePassword
 from . import db
+import hashlib
+import imghdr
 import json
-import cv2
 import re
 import os
 
@@ -137,11 +138,20 @@ def upload():
         f = request.files['file']
         if not (f and allowed_file(f.filename)):
             flash('Please check your format, we only accept png、PNG、jpg、JPG、bmp', category='error')
+        elif imghdr.what(f) not in ('png','jpeg','bmp'):
+            flash('Please check your format, we only accept png、PNG、jpg、JPG、bmp', category='error')
         else:
             basepath = os.path.dirname(__file__)  # 当前文件所在路径
 
-            upload_path = os.path.join(basepath, 'static/images',secure_filename(f.filename))  #注意：没有的文件夹一定要先创建，不然会提示没有该路径
-            f.save(upload_path)
+            temporary_path = os.path.join(basepath, 'static/images',secure_filename(f.filename))  #注意：没有的文件夹一定要先创建，不然会提示没有该路径
+            f.save(temporary_path)
+
+            with open(temporary_path, 'rb') as fp:
+                data = fp.read()
+            filename=hashlib.sha256(data).hexdigest()
+            f.filename=filename+'.'+f.filename.rsplit('.', 1)[1]
+            upload_path=os.path.join(basepath, 'static/images',secure_filename(f.filename))
+            os.rename(temporary_path,upload_path)
 
             User.query.filter(User.id == user.id).update({'portraitLink': secure_filename(f.filename)})
             db.session.commit()
