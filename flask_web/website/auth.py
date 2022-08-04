@@ -22,7 +22,7 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
-                with open('../document.log','a+') as f:
+                with open('./login.log','a+') as f:
                     f.write("Login: "+str(user.id)+" "+str(datetime.datetime.now())+"\n")
                 f.close()
                 return redirect(url_for('views.home'))
