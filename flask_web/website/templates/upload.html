@@ -2,8 +2,8 @@
 <div class="upload_all">
     <form action="" enctype='multipart/form-data' method='POST'>
         <div class="upload_title"><h3 >Alter Portrait</h3></div>
-        <div class="wrapper">  <input type="file" name="file" id="file" />
-            <label for="file" class="btn-3">
+        <div class="wrapper-input">  <input type="file" name="file" id="file" class="clip">
+            <label for="file" class="btn-one">
                 <span>select</span>
             </label>
         </div>
@@ -15,7 +15,7 @@
         </button></div>
     </form>
 </div>
-<div class="jump-ball">
+<!-- <div class="jump-ball">
     <ul class="jump">
         <li class="j-ball"></li>
         <li class="j-ball"></li>
@@ -27,6 +27,54 @@
         <li class="j-ball"></li>
         <li class="j-ball"></li>
     </ul>
+</div> -->
+
+<div class="auto-music-upload">
+    <audio src="{{ url_for('static', filename='music/hi.mp3') }}" loop="loop" controls="controls" autoplay="autoplay"></audio>
 </div>
+<div class="music-man-upload">
+    <div class="wrapper">
+        <div class="border-circle" id="one"></div>
+        <div class="border-circle" id="two"></div>
+        <div class="background-circle">
+          <div class="triangle-light"></div>
+          <div class="body"></div>
+          <span class="shirt-text">I</span>
+          <span class="shirt-text">♥</span>
+          <span class="shirt-text">C</span>
+          <span class="shirt-text">U</span>
+          <span class="shirt-text">C</span>
+          <div class="triangle-dark"></div>
+        </div>
+        <div class="head">
+          <div class="ear" id="left"></div>
+          <div class="ear" id="right"></div>
+          <div class="hair-main">
+            <div class="sideburn" id="left"></div>
+            <div class="sideburn" id="right"></div>
+            <div class="hair-top"></div>
+          </div>
+          <div class="face">
+            <div class="hair-bottom"></div>
+            <div class="nose"></div>
+            <div class="eye-shadow" id="left">
+              <div class="eyebrow"></div>
+              <div class="eye"></div>
+            </div>
+            <div class="eye-shadow" id="right">
+              <div class="eyebrow"></div>
+              <div class="eye"></div>
+            </div>
+            <div class="mouth"></div>
+            <div class="shadow-wrapper">
+              <div class="shadow"></div>
+            </div>
+          </div>
+        </div>
+        <span class="music-note" id="one">&#9835;</span>
+        <span class="music-note" id="two">&#9834;</span>
+      </div>
+</div>
+
 
 {% endblock %}

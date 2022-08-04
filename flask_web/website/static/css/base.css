@@ -228,76 +228,30 @@ body{
 
 
 /* input文件美化 */
-.wrapper{
+
+
+.wrapper-input{
+  margin: 40px auto;
   text-align: center;
 }
-[type="file"] {
-  height: 0;
-  overflow: hidden;
-  width: 0;
+
+.clip{
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
 }
-
-[type="file"] + label {
-  background: #f15d22;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-	font-family: 'Rubik', sans-serif;
-	font-size: inherit;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  outline: none;
-  padding: 1rem 50px;
-  position: relative;
-  transition: all 0.3s;
-  vertical-align: middle;
-  
-  &:hover {
-    background-color: darken(#f15d22, 10%);
-  }
-  
-
-  
-  &.btn-3 {
-    background-color: #ee6d9e;
-    border-radius: 0;
-    overflow: hidden;
-    
-    span {
-      display: inline-block;
-      height: 100%;
-      transition: all 0.3s;
-      width: 100%;
-    }
-    
-  &::before {
-      color: #fff;
-      content: "\f382";
-      font-family: "Font Awesome 5 Pro";
-      font-size: 130%;
-      height: 100%;
-      left: 0;
-      line-height: 2.6;
-      position: absolute;
-      top: -180%;
-      transition: all 0.3s;
-      width: 100%;
-    }
-
-  &:hover {
-      background-color: darken(#ee6d9e, 30%);
-      
-      span {
-        transform: translateY(300%);
-      }
-        
-      &::before {
-        top: 0;
-      }
-    }
-  }
+.btn-one{
+	display: inline-block;
+	width: 96px;
+	height: 32px;
+	padding: 8px 16px;
+	margin: 8px;
+	text-align: center;
+	line-height: 12px;
+	color: #ffffff;
+	background: #f44336;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 1px;
 }
 
 
@@ -305,7 +259,7 @@ body{
 
 .upload_all {
     width: 800px;
-    margin: 20px auto;
+    margin: 40px auto;
 }
 
 .upload_title h3{
@@ -320,6 +274,8 @@ body{
 
 
 .upload_btn{
+  width:200px;
+  transform:scale(1.5,1.3);
   text-align: center;
   margin: 30px auto;
 }
@@ -396,4 +352,27 @@ body{
 }
 .jump .j-ball:nth-child(9){
   animation-delay: 0.8s;
+}
+
+/* 音乐自动播放布局 */
+
+.auto-music{
+  position: relative;
+  top:100px;
+}
+
+.auto-music-upload{
+  position: relative;
+  top:50px;
+}
+
+
+/* upload页面musicman布局 */
+
+.music-man-upload{
+  position:absolute;
+  left:800px;
+  top:150px;
+  text-align: center;
+  transform:scale(0.5,0.5);
 }
