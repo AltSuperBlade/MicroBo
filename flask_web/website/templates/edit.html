@@ -1,7 +1,8 @@
 {% extends "base.html" %} {% block title %}Edit{% endblock %} {% block content
 %}
-<h3 align="center">Edit</h3>
-<div class="edi">
+<div class="change-title"><h3>Edit</h3></div>
+<div class="change-all">
+<div class="change">
   <form method="post">
     {{ edit_email.csrf_token }} {{ edit_email.email.label }}{{
     edit_email.email(class="form-control",type="email") }}
@@ -14,15 +15,6 @@
   </form>
 </div>
 
-<div class="auto-music">
-  <audio
-    src="{{ url_for('static', filename='music/hi.mp3') }}"
-    loop="loop"
-    controls="controls"
-    autoplay="autoplay"
-    hidden="true"
-  ></audio>
-</div>
 <div class="music-man">
   <div class="wrapper">
     <div class="border-circle" id="one"></div>
@@ -65,5 +57,15 @@
     <span class="music-note" id="one">&#9835;</span>
     <span class="music-note" id="two">&#9834;</span>
   </div>
+</div>
+</div>
+<div class="auto-music">
+  <audio
+    src="{{ url_for('static', filename='music/hi.mp3') }}"
+    loop="loop"
+    controls="controls"
+    autoplay="autoplay"
+    hidden="true"
+  ></audio>
 </div>
 {% endblock %}

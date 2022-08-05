@@ -1,13 +1,17 @@
 {% extends "base.html" %} {% block title %}Alter Portrait{% endblock %} {% block
 content %}
-<div class="upload_all">
+<div class="change-title"><h3>Alter Portrait</h3></div>
+<div class="change-all">
+<div class="change">
   <form action="" enctype="multipart/form-data" method="POST">
-    <div class="upload_title"><h3>Alter Portrait</h3></div>
-    <div class="wrapper-input">
-      <input type="file" name="file" id="file" class="clip" />
-      <label for="file" class="btn-one">
-        <span>select</span>
-      </label>
+    <!-- <div class="wrapper-input">
+      <input type="file" name="file" id="file" placeholder="Add picture" />
+      <label for="file">Add picture"</label>
+    </div> -->
+    <div class='file-input'>
+      <input type="file" name="file" id="file">
+      <span class='button'>Choose</span>
+      <span class='label' data-js-label>No file selected</label>
     </div>
     <div class="butn upload_btn">
       <button type="submit" class="btn btn-primary">
@@ -39,16 +43,7 @@ content %}
     </ul>
 </div> -->
 
-<div class="auto-music-upload">
-  <audio
-    src="{{ url_for('static', filename='music/hi.mp3') }}"
-    loop="loop"
-    controls="controls"
-    autoplay="autoplay"
-    hidden="true"
-  ></audio>
-</div>
-<div class="music-man-upload">
+<div class="music-man">
   <div class="wrapper">
     <div class="border-circle" id="one"></div>
     <div class="border-circle" id="two"></div>
@@ -90,5 +85,16 @@ content %}
     <span class="music-note" id="one">&#9835;</span>
     <span class="music-note" id="two">&#9834;</span>
   </div>
+</div>
+</div>
+
+<div class="auto-music-upload">
+  <audio
+    src="{{ url_for('static', filename='music/hi.mp3') }}"
+    loop="loop"
+    controls="controls"
+    autoplay="autoplay"
+    hidden="true"
+  ></audio>
 </div>
 {% endblock %}
