@@ -1,13 +1,10 @@
 .music-man{
   position:absolute;
-  left:600px;
-  top:150px;
   text-align: center;
-  transform:scale(0.5,0.5);
+  transform:scale(0.6,0.6);
 }
 
 .wrapper{
-  margin-top:100px;
   vertical-align: middle;
   position: relative;
 }
