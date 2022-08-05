@@ -7,7 +7,8 @@ content %}
         <h3>Hello world!</h3>
       </div>
       <ul class="index_article" id="notes">
-        {% for note in accessingUser.notes %}
+        {% for note in accessingUser.notes|sort(attribute='date', reverse =
+        True) %}
         <li class="article">
           <div class="show">
             <div class="show-content">
