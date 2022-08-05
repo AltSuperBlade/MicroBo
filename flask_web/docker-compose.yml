@@ -1,7 +1,10 @@
 version: "3.9"  # optional since v1.27.0
 services:
   web:
-    image: akairo/microbo:dev
+    build: ./
+    container_name: microbo
+    # 已有image的情况下注释掉build部分，使用下面image部分
+    # image: akairo/microbo:dev
     ports:
       - "11451:5000"
     
