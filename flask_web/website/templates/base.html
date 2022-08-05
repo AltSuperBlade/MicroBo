@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='css/base.css') }}"
+    />
+
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -13,6 +22,13 @@
       type="text/css"
       href="{{ url_for('static', filename='css/font-awesome.min.css') }}"
     />
+
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='css/music.css') }}"
+    />
+
 
     <title>{% block title %}Home{% endblock %}</title>
   </head>
@@ -70,9 +86,16 @@
       src="{{ url_for('static', filename='js/bootstrap.min.js') }}"
     ></script>
 
+
+    <script
+    src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='index.js') }}"
     ></script>
+
+
   </body>
 </html>

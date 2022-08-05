@@ -1,0 +1,417 @@
+.article_list p{
+    text-align: justify;
+}
+
+.self_info_text h3{margin: 20px auto;font-size: 20px;text-align: left;color: #999;}
+
+body{
+  height: 100%;
+}
+
+/*身体全部部分*/
+.article_box{width: 1100px;margin: 30px auto;}
+/*左边文章部分*/
+.left{width: 300px;float: left;}
+/*右边资料部分*/
+.right{width: 780px;float: right;}
+
+
+/*文章部分*/
+.article_box_one{width: 100%;margin-bottom: 24px;}
+.index_article_title{padding: 16px 20px;background:#f8f8fa;box-shadow: 0 1px 3px #ddd;border: 1px #fff solid;-webkit-box-shadow: 0 1px 3px #ddd;}
+.index_article_title h3{font-weight: normal;display: block;width: 90%;float: left;color: #333;}
+.index_article_title a{display: block;width: 10%;float: right;font-size: 13px;text-align: right;color: #999;padding-top: 6px;}
+.index_article_title a:hover{color: #3a76bf;}
+  
+.article{
+    list-style-type: none;
+}
+  
+
+
+
+/*后期添加的留言框*/
+.show {
+	width: 100%;
+  margin: 20px auto;
+}
+ 
+.show-content {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	padding: 10px;
+	position: relative;
+	overflow: hidden;
+}
+ 
+.show-name {
+	width: 100%;
+	text-align: left;
+	font-size: 14px;
+	color: #333;
+	font-weight: bold;
+}
+ 
+.show-txt {
+	width: 100%;
+	color: #444;
+	font-size: 14px;
+	margin-top: 10px;
+}
+ 
+.show-txt p {
+	width: 100%;
+	word-wrap: break-word;
+}
+ 
+.show-time {
+  float: right;
+	font-size: 12px;
+	color: #808080;
+	margin-top: 10px;
+}
+ 
+.show-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 12px;
+	color: #ccc;
+	cursor: pointer;
+	transition: .5s;
+}
+ 
+.show-close:hover {
+	color: red;
+}
+ 
+/* 个人资料部分 */
+
+
+/* 悬停置顶效果 */
+/* .self_info {
+    position: -webkit-sticky;
+    position: sticky;
+    height:  100px;
+    z-index: 10;
+} */
+
+
+/* 按钮美化 */
+
+/*方案一*/
+/* .btn {
+    background: #eb94d0;
+    margin: 20px auto; */
+    /* 创建渐变 */
+    /* background-image: -webkit-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -moz-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -ms-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -o-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: linear-gradient(to bottom, #eb94d0, #2079b0); */
+    /* 给按钮添加圆角 */
+    /* -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    text-shadow: 3px 2px 1px #9daef5;
+    -webkit-box-shadow: 6px 5px 24px #666666;
+    -moz-box-shadow: 6px 5px 24px #666666;
+    box-shadow: 6px 5px 24px #666666;
+    font-family: Arial;
+    color: #fafafa;
+    font-size: 27px;
+    padding: 19px;
+    text-decoration: none;
+  } */
+  /* 悬停样式 */
+  /* .btn:hover {
+    background: #2079b0;
+    background-image: -webkit-linear-gradient(top, #2079b0, #eb94d0);
+    background-image: -moz-linear-gradient(top, #2079b0, #eb94d0);
+    background-image: -ms-linear-gradient(top, #2079b0, #eb94d0);
+    background-image: -o-linear-gradient(top, #2079b0, #eb94d0);
+    background-image: linear-gradient(to bottom, #2079b0, #eb94d0);
+    text-decoration: none;
+  } */
+
+  /*方案二*/
+
+.butn{
+  margin: 20px auto;
+
+}
+
+  button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 500;
+    line-height: 1;
+    padding: 1em 1.5em;
+    position: relative;
+    transition: filter var(--motion-duration);
+  }
+  
+  button:hover {
+    filter: brightness(1.1);
+  }
+  
+  button:active {
+    filter: brightness(0.9);
+  }
+  
+  button > span {
+    display: block;
+    position: relative;
+    transition: transform var(--motion-duration) var(--motion-ease);
+    z-index: 1;
+  }
+  
+  button:hover > span {
+    transform: scale(1.05);
+  }
+  
+  button:active > span {
+    transform: scale(0.95);
+  }
+  
+  button > svg {
+    fill: #3a76bf;
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+  }
+  
+  button > svg > path {
+    transition: var(--motion-duration) var(--motion-ease);
+  }
+  
+  button:hover > svg > path {
+    d: path("M0,0 C0,-5 100,-5 100,0 C105,0 105,100 100,100 C100,105 0,105 0,100 C-5,100 -5,0 0,0");
+  }
+  
+  button:active > svg > path {
+    d: path("M0,0 C30,10 70,10 100,0 C95,30 95,70 100,100 C70,90 30,90 0,100 C5,70 5,30 0,0");
+  }
+
+
+
+
+
+  /* 头像 */
+  .round_icon{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .round_icon_small{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+
+/* input文件美化 */
+
+
+.file-input{
+  margin: 40px auto;
+}
+
+.clip{
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+}
+.btn-one{
+	display: inline-block;
+	width: 96px;
+	height: 32px;
+	padding: 8px 16px;
+	margin: 8px;
+	text-align: center;
+	line-height: 12px;
+	color: #ffffff;
+	background: #f44336;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 1px;
+}
+
+
+
+
+
+
+.upload_btn{
+  width:200px;
+  transform:scale(1.8,1.5);
+  text-align: left;
+  margin: 30px auto;
+}
+
+
+/*跳动的小球css*/
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.jump-ball{
+  text-align: center;
+  position:fixed;
+  bottom:0;
+}
+.jump{
+  display: flex;
+  border-bottom: 10px solid #31bbe5;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.jump .j-ball{
+  width: 40px;
+  height: 40px;
+  list-style: none;
+  background: #fff;
+  margin: auto 40px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  animation: animate 1s linear infinite;
+  -webkit-animation: animate 1s linear infinite;
+  box-shadow: 0 0 10px #31bbe5;
+}
+@keyframes animate{
+  0%{
+      transform: translateY(0);
+  }
+  50%{
+      transform: translateY(-150px);
+  }
+  100%{
+      transform: translateY(0);
+  }
+}
+
+.jump .j-ball:nth-child(2){
+  animation-delay: 0.1s;
+}
+.jump .j-ball:nth-child(3){
+  animation-delay: 0.2s;
+}
+.jump .j-ball:nth-child(4){
+  animation-delay: 0.3s;
+}
+.jump .j-ball:nth-child(5){
+  animation-delay: 0.4s;
+}
+.jump .j-ball:nth-child(6){
+  animation-delay: 0.5s;
+}
+.jump .j-ball:nth-child(7){
+  animation-delay: 0.6s;
+}
+.jump .j-ball:nth-child(8){
+  animation-delay: 0.7s;
+}
+.jump .j-ball:nth-child(9){
+  animation-delay: 0.8s;
+}
+
+/* 音乐自动播放布局 */
+
+.auto-music{
+  position: relative;
+  top:100px;
+}
+
+.auto-music-upload{
+  position: relative;
+  top:50px;
+}
+
+
+
+
+/*修改界面全体布局*/
+.change-all{width: 1100px;margin: 30px auto;height: 400px;}
+/*动画小人*/
+.music-man{width: 500px;float: left;margin-top: 10px;}
+/*form*/
+.change{width: 580px;float: right;margin-top: 50px;}
+
+.change-title h3{
+  margin: 30px auto;
+  font-size: 50px;
+  text-align: center;
+  color: #999;
+}
+
+
+
+
+.file-input {
+  display: inline-block;
+  text-align: left;
+  background: #fff;
+  padding: 16px;
+  width: 450px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.file-input > [type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.file-input > .button {
+  display: inline-block;
+  cursor: pointer;
+  background: #eee;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.file-input:hover > .button {
+  background: dodgerblue;
+  color: white;
+}
+
+.file-input > .label {
+  color: #333;
+  white-space: nowrap;
+  opacity: .3;
+}
+
+.file-input.-chosen > .label {
+  opacity: 1;
+}

@@ -7,10 +7,14 @@
     <button type="submit" class="btn btn-primary">Add Note</button>
   </div>
 </form>
-<ul class="list-group list-group-flush" id="notes">
+<!-- <ul class="list-group list-group-flush" id="notes">
   {% for note in notes %}
   <li class="list-group-item">
-    <a href="/profile/{{note.user_id}}">{{ note.nickname }}</a>
+    {% for people in users %}
+      {% if note.user_id==people.id %}
+        <a href="/profile/{{note.user_id}}"><img src="{{ url_for('static', filename='images/'+people.portraitLink) }}" alt="{{ people.portraitLink }}" att="a" width="50" height="50">{{ people.nickname }}</a>
+      {% endif %}
+    {% endfor %}
     <div class="pull-right">
       {{ note.date }}
     </div>
@@ -23,5 +27,36 @@
     {% endif %}
   </li>
   {% endfor %}
+</ul> -->
+
+
+<ul class="index_article" id="notes">
+  {% for note in notes %}
+  <li class="article">
+      <div class="show">
+          <div class="show-content">
+              <div class="show-name">
+                {% for people in users %}
+                {% if note.user_id==people.id %}
+                  <a href="/profile/{{note.user_id}}"><img src="{{ url_for('static', filename='images/'+people.portraitLink) }}" class="round_icon_small" alt="{{ people.portraitLink }}" att="a" >{{ people.nickname }}</a>
+                {% endif %}
+                {% endfor %}
+              </div>
+              <div class="show-txt">
+                  <p class="">{{ note.data }}</p>
+              </div>
+              <div class="show-time">{{ note.date }}</div>
+              <div class="show-close">
+                  {% if note.user_id == user.id %}
+                  <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </li>
+  {% endfor %}
 </ul>
+
 {% endblock %}
