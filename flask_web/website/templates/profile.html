@@ -4,7 +4,11 @@ content %}
   <div class="right">
     <div class="article_box_one">
       <div class="index_article_title clearfix">
-        <h3>Hello world!</h3>
+        {% if user.id == accessingUser.id %}
+        <h3>My Notes</h3>
+        {% else %}
+        <h3>Hi, {{user.nickname}}</h3>
+        {% endif %}
       </div>
       <ul class="index_article" id="notes">
         {% for note in accessingUser.notes|sort(attribute='date', reverse =

@@ -150,8 +150,12 @@ def upload():
                 data = fp.read()
             filename=hashlib.sha256(data).hexdigest()
             f.filename=filename+'.'+f.filename.rsplit('.', 1)[1]
-            upload_path=os.path.join(basepath, 'static/images',secure_filename(f.filename))
-            os.rename(temporary_path,upload_path)
+
+            if f.filename in os.listdir(os.path.join(basepath, 'static/images')):
+                pass
+            else:
+                upload_path=os.path.join(basepath, 'static/images',secure_filename(f.filename))
+                os.rename(temporary_path,upload_path)
 
             User.query.filter(User.id == user.id).update({'portraitLink': secure_filename(f.filename)})
             db.session.commit()
