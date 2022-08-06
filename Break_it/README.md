@@ -45,7 +45,7 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
 
 ### 子域名爆破尝试
 
-首先我们来试着**子域名爆破**。这里会使用到一个工具 `ksubdomain` ，linux 版本[下载地址点我](https://github.com/knownsec/ksubdomain/releases/download/v0.7/ksubdomain_linux.zip)，工具的 github 介绍地址[点击这里](https://github.com/knownsec/ksubdomain)。
+首先我们来试着子域名爆破。这里会使用到一个工具 `ksubdomain` ，linux 版本[下载地址点我](https://github.com/knownsec/ksubdomain/releases/download/v0.7/ksubdomain_linux.zip)，工具的 github 介绍地址[点击这里](https://github.com/knownsec/ksubdomain)。
 
 1. 注意在 linux 上使用的话还需要安装 `libpcap-dev` , 用 `apt install libpcap-dev` 即可。
    
@@ -57,11 +57,11 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
    
    ![爆破结果](img/Subdomains-1.jpg)
    
-   但是吧，工具内置的字典跑了大概1小时，爆破了160w+的子域名，一个成功的都没有，所以我们基本可以排除子域名隐藏，将重心转移到隐藏文件的寻找上。
+   但是吧，工具内置的字典跑了大概一个多小时，爆破了160w+的子域名，一个成功的都没有，所以我们基本可以排除子域名隐藏，将重心转移到隐藏文件的寻找上。
 
 ### 目录扫描
 
-接着我们来试着**目录扫描**， kali 自带有工具 `dirb` 
+接着我们来试着目录扫描， kali 自带有工具 `dirb` 
 
 1. 使用命令 `dirb http://127.0.0.1:11451/` , 我们可以得到结果如下图：
    
