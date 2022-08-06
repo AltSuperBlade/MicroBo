@@ -1,10 +1,38 @@
-# DevelopmentForMicrobo
+# MicroBo
 
-## 任务列表
+## Setup & Installtion
 
-### ddl：2022.8.5
+Make sure you have the latest version of Python installed.
 
-- [X] egoisticlily 的文档
-- [X] Itzhakrees 的 `fix it`
-- [X] Tbc-tang 的 `break it`
-- [X] caomoumou-github 的全部前端文件
+```bash
+git clone <repo-url>
+cd ./MicroBo
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+## Running The App
+
+### Run without docker
+
+```bash
+python main.py
+```
+
+#### Viewing The App
+
+Go to `http://127.0.0.1:5000`
+
+---
+
+### Run on docker
+
+```bash
+docker-compose up -d
+```
+
+#### Viewing The App
+
+Go to `http://127.0.0.1:11451`
