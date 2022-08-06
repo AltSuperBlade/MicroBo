@@ -5,6 +5,6 @@
 ### ddl：2022.8.5
 
 - [ ] egoisticlily 的文档
-- [ ] Itzhakrees 的 `fix it`
+- [X] Itzhakrees 的 `fix it`
 - [ ] Tbc-tang 的 `break it`
-- [x] caomoumou-github 的全部前端文件
+- [X] caomoumou-github 的全部前端文件
