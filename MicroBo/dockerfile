@@ -2,9 +2,9 @@ FROM python:3.8
 
 MAINTAINER akairo
 
-ADD . /flask_web
+ADD . /MicroBo
 
-WORKDIR /flask_web
+WORKDIR /MicroBo
 
 RUN chmod +x ./flagchange.sh
 

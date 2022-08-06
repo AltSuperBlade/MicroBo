@@ -1,7 +1,7 @@
-diff --git a/flask_web/website/templates/login.html b/flask_web/website/templates/login.html
+diff --git a/MicroBo/website/templates/login.html b/MicroBo/website/templates/login.html
 deleted file mode 100644
 index b17cd15..0000000
---- a/flask_web/website/templates/login.html
+--- a/MicroBo/website/templates/login.html
 +++ /dev/null
 @@ -1,38 +0,0 @@
 -{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
@@ -43,10 +43,10 @@ index b17cd15..0000000
 -  
 -{% endblock %}
 \ No newline at end of file
-diff --git a/flask_web/website/views.py b/flask_web/website/views.py
+diff --git a/MicroBo/website/views.py b/MicroBo/website/views.py
 index 5d7d8dd..92a0185 100644
---- a/flask_web/website/views.py
-+++ b/flask_web/website/views.py
+--- a/MicroBo/website/views.py
++++ b/MicroBo/website/views.py
 @@ -178,9 +178,3 @@ def delete_note():
  
      return jsonify({})
