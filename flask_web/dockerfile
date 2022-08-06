@@ -1,0 +1,17 @@
+FROM python:3.8
+
+MAINTAINER akairo
+
+ADD . /flask_web
+
+WORKDIR /flask_web
+
+RUN chmod +x ./flagchange.sh
+
+RUN mkdir /flag 
+
+RUN echo "flag{flag_test}" > /flag/flag.txt
+
+RUN pip install -r requirements.txt
+
+CMD ["python","./main.py"]

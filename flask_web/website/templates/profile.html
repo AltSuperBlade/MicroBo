@@ -1,0 +1,117 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block
+content %}
+<div class="article_box clearfix">
+  <div class="right">
+    <div class="article_box_one">
+      <div class="index_article_title clearfix">
+        {% if user.id == accessingUser.id %}
+        <h3>My Notes</h3>
+        {% else %}
+        <h3>Hi, {{user.nickname}}</h3>
+        {% endif %}
+      </div>
+      <ul class="index_article" id="notes">
+        {% for note in accessingUser.notes|sort(attribute='date', reverse =
+        True) %}
+        <li class="article">
+          <div class="show">
+            <div class="show-content">
+              <div class="show-name">
+                {% if note.user_id == user.id %} me {% else %}
+                {{accessingUser.nickname}} {% endif %}
+              </div>
+              <div class="show-txt">
+                <p class="">{{ note.data }}</p>
+              </div>
+              <div class="show-time">{{ note.date }}</div>
+              <div class="show-close">
+                {% if note.user_id == user.id %}
+                <button
+                  type="button"
+                  class="close"
+                  onClick="deleteNote({{ note.id }})"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="left">
+    <div class="self_info">
+      <img
+        src="{{ url_for('static', filename='images/'+accessingUser.portraitLink) }}"
+        class="round_icon"
+        alt="{{accessingUser.portraitLink}}"
+      />
+      <div class="self_info_text">
+        <h3>Email:{{accessingUser.email}}</h3>
+        <div>
+          {% if user.id==accessingUser.id %}
+          <div class="butn">
+            <button
+              type="submit"
+              class="btn btn-primary btn1"
+              onclick="window.location.href='{{ url_for('views.upload') }}'"
+            >
+              <span>Upload portrait</span>
+              <svg
+                viewBox="-5 -5 110 110"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="butn">
+            <button
+              type="submit"
+              class="btn btn-primary btn1"
+              onclick="window.location.href='{{ url_for('views.edit') }}'"
+            >
+              <span>Edit Profile</span>
+              <svg
+                viewBox="-5 -5 110 110"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="butn">
+            <button
+              type="submit"
+              class="btn btn-primary btn1"
+              onclick="window.location.href='{{ url_for('views.ChangePassword') }}'"
+            >
+              <span>Change Password</span>
+              <svg
+                viewBox="-5 -5 110 110"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"
+                />
+              </svg>
+            </button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}

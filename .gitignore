@@ -1,0 +1,5 @@
+.vscode
+flask_web/website/__pycache__
+flask_web/website/database.db
+flask_web/website/images
+flask_web/login.log
