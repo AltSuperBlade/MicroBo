@@ -24,6 +24,8 @@
 | notes | string | 所有留言   |
 | users | string | 所有用户   |
 
+***
+
 ### GET '/profile/<user_id>' profile界面
 
 #### 简要描述：
@@ -46,6 +48,8 @@
 | ------------- | ------ | ---------- |
 | user          | string | 当前登录用户     |
 | accessingUser | string | 当前访问主页所属用户 |
+
+***
 
 ### POST '/edit' profile界面
 
@@ -72,6 +76,8 @@
 | edit_email    | string | editEmail()处理结果    |
 | edit_nickname | string | editNickname()处理结果 |
 
+***
+
 ### POST '/change-password' 修改密码界面
 
 #### 简要描述：
@@ -96,6 +102,8 @@
 | user            | string | 当前登录用户                |
 | change_password | string | change_password()处理结果 |
 
+***
+
 ### POST '/upload' 上传更新头像页面
 
 #### 简要描述：
@@ -118,6 +126,8 @@
 | ---- | ------ | ------ |
 | user | string | 当前登录用户 |
 
+***
+
 ### POST '/delete-note' 删除留言功能
 
 #### 简要描述：
@@ -132,10 +142,62 @@
 
 #### 参数：
 
-| 参数名    | 类型     | 请求方式 | 说明                                    |
-| ------ | ------ | ---- | ------------------------------------- |
-| note   | string | POST | 需要删除的留言内容                             |
+| 参数名    | 类型     | 请求方式 | 说明        |
+| ------ | ------ | ---- | --------- |
+| note   | string | POST | 需要删除的留言内容 |
 | noteId | number | POST | 需要删除的留言id |
+
+#### 返回参数说明：
+
+| 参数名 | 类型  | 说明  |
+| --- | --- | --- |
+| /   |     |     |
+
+***
+
+### POST '/sign_up' 注册页面
+
+#### 简要描述：
+
+注册页面
+
+#### 请求URL：
+
+`http://172.19.0.2:5000/sign_up`
+
+#### 参数：
+
+| 参数名       | 类型     | 请求方式 | 说明        |
+| --------- | ------ | ---- | --------- |
+| email     | string | POST | 注册使用的邮箱   |
+| nickname  | string | POST | 注册使用的昵称   |
+| password1 | string | POST | 注册使用的密码   |
+| password2 | string | POST | 确认注册使用的密码 |
+
+#### 返回参数说明：
+
+| 参数名 | 类型  | 说明  |
+| --- | --- | --- |
+| /   |     |     |
+
+***
+
+### POST '/login' 注册页面
+
+#### 简要描述：
+
+登录页面
+
+#### 请求URL：
+
+`http://172.19.0.2:5000/login`
+
+#### 参数：
+
+| 参数名      | 类型     | 请求方式 | 说明         |
+| -------- | ------ | ---- | ---------- |
+| email    | string | POST | login使用的邮箱 |
+| password | string | POST | login使用的密码 |
 
 #### 返回参数说明：
 
