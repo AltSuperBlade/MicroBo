@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, current_app,url_for,make_response,render_template_string
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, current_app,url_for,render_template_string
 from flask_login import login_required, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
 from datetime import timedelta
 from .models import Note,User
