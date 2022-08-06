@@ -1,5 +1,3 @@
-[toc]
-
 # Break_it --- flag 寻找过程
 
 ## 实验环境
