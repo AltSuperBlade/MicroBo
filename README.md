@@ -6,5 +6,5 @@
 
 - [ ] egoisticlily 的文档
 - [X] Itzhakrees 的 `fix it`
-- [ ] Tbc-tang 的 `break it`
+- [X] Tbc-tang 的 `break it`
 - [X] caomoumou-github 的全部前端文件
