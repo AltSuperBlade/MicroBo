@@ -1,0 +1,25 @@
+diff --git a/flask_web/website/templates/index.html b/flask_web/website/templates/index.html
+deleted file mode 100644
+index 873b7ef..0000000
+--- a/flask_web/website/templates/index.html
++++ /dev/null
+@@ -1,4 +0,0 @@
+-{% extends "base.html" %} {% block title %}Undone{% endblock %} {% block content %}
+-<h1>Welcome to SSTI</h1>
+-{{content}}
+-{% endblock %}
+\ No newline at end of file
+diff --git a/flask_web/website/views.py b/flask_web/website/views.py
+index 5d7d8dd..92a0185 100644
+--- a/flask_web/website/views.py
++++ b/flask_web/website/views.py
+@@ -178,9 +178,3 @@ def delete_note():
+ 
+     return jsonify({})
+ 
+-
+-@views.route("/index/")
+-def ssti():
+-    # try to access 'http://127.0.0.1:5000/index/?content=<script>alert(/xss/)</script>'
+-    content = request.args.get("content")
+-    return render_template_string(content)
