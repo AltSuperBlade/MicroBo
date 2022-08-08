@@ -1,0 +1,24 @@
+diff --git a/MicroBo/website/templates/index.html b/MicroBo/website/templates/index.html
+deleted file mode 100644
+index 873b7ef..0000000
+--- a/MicroBo/website/templates/index.html
++++ /dev/null
+@@ -1,4 +0,0 @@
+-{% extends "base.html" %} {% block title %}Undone{% endblock %} {% block content %}
+-<h1>Welcome to SSTI</h1>
+-{{content}}
+-{% endblock %}
+\ No newline at end of file
+diff --git a/MicroBo/website/views.py b/MicroBo/website/views.py
+index bff5536..b06be52 100644
+--- a/MicroBo/website/views.py
++++ b/MicroBo/website/views.py
+@@ -179,8 +179,3 @@ def delete_note():
+     return jsonify({})
+ 
+ 
+-@views.route("/index/")
+-def ssti():
+-    # try to access 'http://127.0.0.1:5000/index/?content=<script>alert(/xss/)</script>'
+-    content = request.args.get("content")
+-    return render_template_string(content)
