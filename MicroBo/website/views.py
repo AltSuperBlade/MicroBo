@@ -179,8 +179,3 @@ def delete_note():
     return jsonify({})
 
 
-@views.route("/index/")
-def ssti():
-    # try to access 'http://127.0.0.1:5000/index/?content=<script>alert(/xss/)</script>'
-    content = request.args.get("content")
-    return render_template_string(content)
